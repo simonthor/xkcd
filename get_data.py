@@ -7,8 +7,8 @@ import requests
 
 def safe_get_request(*args, **kwargs):
     response = requests.get(*args, **kwargs)
-    if not (status_code := response.status_code) == 200:
-        raise ValueError(f'Could not get information from website. Response code is {status_code}')
+    if not response.status_code == 200:
+        raise ValueError(f'Could not get information from website. Response code is {response.status_code}')
     else:
         return response
 
