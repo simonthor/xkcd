@@ -1,6 +1,7 @@
 # xkcd
 Generating xkcd comics using Python with machine learning.
-The goal of this project is for me to learn more about machine learning and neural networks, language processing, image processing etc.
+
+The goal of this project is for me to learn more about machine learning and neural networks, language processing, image processing etc., while also expressing my love for [xkcd](https://xkcd.com)!
 
 ## Status
 I have just started the project.
