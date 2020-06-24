@@ -20,11 +20,15 @@ def get_most_recent_comic_num():
     return most_recent_comic['num']
 
 
-def get_image(comic_num):
+def get_image(comic_num: int):
     base_url = 'https://xkcd.com/'
     base_end_url = 'info.0.json'
     comic_info = safe_get_request(f'{base_url}{comic_num}/{base_end_url}').json()
-    image_url = comic_info['img']
+    try:
+        image_url = comic_info['img']
+    except KeyError:
+        print(f'no image associated with Comic number {comic_num}.')
+        return
     image = safe_get_request(image_url, stream=True)
     filename = f"{comic_num}.{image_url.split('.')[-1]}"
     with open(filename, 'wb') as image_file:
