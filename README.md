@@ -9,3 +9,6 @@ I have just started the project.
 ## Required packages
 See [environment.yml](environment.yml). 
 Since the project is still in its early stages, this list will likely change. 
+
+## Files
+The files in [ml_intro/](ml_intro) are not written by me, but copied from Google and only used for learning purposes. 
