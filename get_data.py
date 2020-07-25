@@ -2,9 +2,8 @@ import shutil
 from bs4 import BeautifulSoup
 import requests
 
+
 # TODO: create a class?
-
-
 def safe_get_request(*args, **kwargs):
     response = requests.get(*args, **kwargs)
     if not response.status_code == 200:
