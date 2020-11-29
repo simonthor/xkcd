@@ -19,7 +19,7 @@ def get_most_recent_comic_num():
     return most_recent_comic['num']
 
 
-def get_image(comic_num: int):
+def get_image(comic_num: int, folder: str):
     base_url = 'https://xkcd.com/'
     base_end_url = 'info.0.json'
     comic_info = safe_get_request(f'{base_url}{comic_num}/{base_end_url}').json()
@@ -29,12 +29,12 @@ def get_image(comic_num: int):
         print(f'no image associated with Comic number {comic_num}.')
         return
     image = safe_get_request(image_url, stream=True)
-    filename = f"{comic_num}.{image_url.split('.')[-1]}"
+    filename = f"{folder}/{comic_num}.{image_url.split('.')[-1]}"
     with open(filename, 'wb') as image_file:
         shutil.copyfileobj(image.raw, image_file)
 
 
-def get_transcript(comic_num):
+def get_transcript(comic_num: int):
     all_html = requests.get(f'https://explainxkcd.com/{comic_num}')
     soup = BeautifulSoup(all_html.text, 'html.parser')
     transcript_title = soup.find(text='Transcript')
@@ -44,7 +44,7 @@ def get_transcript(comic_num):
         if tag == '\n':
             continue
         elif tag.name == 'dl':
-             transcript += tag.text
+            transcript += tag.text
         else:
             break
 
